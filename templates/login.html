@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post" action="/login">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required class="form-control">
+                <input type="checkbox" id="showPassword"> Show Password
+            </div>
+            <!-- Hidden field for 'next' parameter -->
+            <input type="hidden" name="next" value="{{ next }}">
+            <input type="submit" value="login" class="btn btn-primary">
+        </form>
+    </div>
+
+<script>
+    // Get the password input field and the showPassword checkbox
+    var passwordInput = document.getElementById("password");
+    var showPasswordCheckbox = document.getElementById("showPassword");
+
+    // Add an event listener to the checkbox to toggle password visibility
+    showPasswordCheckbox.addEventListener("change", function() {
+        // Change the type attribute of the password input based on checkbox state
+        passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
+    });
+</script>
+
+</body>
+</html>
